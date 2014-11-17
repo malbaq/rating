@@ -30,6 +30,8 @@ class ViewController: UIViewController {
             } else {
             
                 let image = UIImage(data: data)
+                
+                self.evkurov.image = image
             
             }
         
