@@ -10,9 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var evkurov: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let url = NSURL(string: "http://www.ingushetia.ru/images/president3.jpg")
+        
+        let urlRequest = NSURLRequest(URL: url)
+        
+        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue(), completionHandler: {
+            response, data, error in
+            
+            if error != nil {
+            
+                println("fuck off")
+                
+            } else {
+            
+                let image = UIImage(data: data)
+            
+            }
+        
+        })
     }
 
     override func didReceiveMemoryWarning() {
