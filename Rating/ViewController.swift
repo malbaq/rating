@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         let url = NSURL(string: "http://www.ingushetia.ru/images/president3.jpg")
         
-        let urlRequest = NSURLRequest(URL: url)
+        let urlRequest = NSURLRequest(URL: url!)
         
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue(), completionHandler: {
             response, data, error in
