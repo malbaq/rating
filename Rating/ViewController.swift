@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        Parse.setApplicationId("7pxaGDDuF3lNMRbyvlDaiSwVN0aWFQbNiLAfSFPC", clientKey: "luseFR8gfqT3Q05Qp3A0JufRoxxNMNoy0lNBpKqT")
+        
         let url = NSURL(string: "http://www.ingushetia.ru/images/president3.jpg")
         
         let urlRequest = NSURLRequest(URL: url!)
