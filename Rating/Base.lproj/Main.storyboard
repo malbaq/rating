@@ -30,6 +30,9 @@
                                 <state key="normal" title="Да">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="yesButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FOr-cb-KUd"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Доверяете ли Вы главе Республики Ингушетия Юнус-беку Евкурову?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vd5-zv-V90">
                                 <rect key="frame" x="30" y="285" width="260" height="42"/>

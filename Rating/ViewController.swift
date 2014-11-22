@@ -9,8 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    /* Set up var to save timestamp. Initial == 0 */
+    
+    /* Add link to y/n buttons and code to submit when yesButtonpressed then if timervar > 1 day then ask for confirmation on action and store click */
+    
+    /* Confidence rating query for special db class build with corrections */
+    
+    /* Query for number of the votes for another special db class */
 
     @IBOutlet var evkurov: UIImageView!
+    
+    @IBAction func yesButtonPressed(sender: AnyObject) {
+        
+        var score = PFObject(className: "score")
+        score.setObject("Maga", forKey: "name")
+        score.setObject(38, forKey: "number")
+        score.saveInBackgroundWithBlock{
+            (succes: Bool!, error: NSError!) -> Void in
+            if succes == true {
+                println("Done with ID \(score.objectId)")
+            } else {
+                println(error)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
