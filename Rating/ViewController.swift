@@ -23,8 +23,7 @@ class ViewController: UIViewController {
     @IBAction func yesButtonPressed(sender: AnyObject) {
         
         var score = PFObject(className: "score")
-        score.setObject("Maga", forKey: "name")
-        score.setObject(38, forKey: "number")
+        score.setObject(1, forKey: "vote")
         score.saveInBackgroundWithBlock{
             (succes: Bool!, error: NSError!) -> Void in
             if succes == true {
