@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet var evkurov: UIImageView!
     
     @IBAction func yesButtonPressed(sender: AnyObject) {
-        
+
+        // var score should be refactorred for both buttons
         var score = PFObject(className: "score")
         score.setObject(1, forKey: "vote")
         score.saveInBackgroundWithBlock{
@@ -33,7 +34,21 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
+    @IBAction func noButtonPressed(sender: AnyObject) {
+        
+        var score = PFObject(className: "score")
+        score.setObject(0, forKey: "vote")
+        score.saveInBackgroundWithBlock{
+            (succes: Bool!, error: NSError!) -> Void in
+            if succes == true {
+                println("Done with ID \(score.objectId)")
+            } else {
+                println(error)
+            }
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
