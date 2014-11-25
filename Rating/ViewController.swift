@@ -12,11 +12,23 @@ class ViewController: UIViewController {
     
     /* Set up var to save timestamp. Initial == 0 */
     
-    /* Add link to y/n buttons and code to submit when yesButtonpressed then if timervar > 1 day then ask for confirmation on action and store click */
+    /* Add link to y/n buttons and code to submit when yesButtonpressed then 
+    
+    if timervar > 1 day then 
+    
+    vote is allowed
+    
+    else alert "You allowed to vote only once within 24 hours" 
+    */
+    
+    /* Add acitivityIndicator aka Spinner
+    
+    */
+    
     
     /* Confidence rating query for special db class build with corrections */
     
-    /* Query for number of the votes for another special db class */
+    /* Query for number of the votes for another special db class 87 */
 
     @IBOutlet var evkurov: UIImageView!
     
@@ -79,7 +91,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
