@@ -10,26 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    /* Set up var to save timestamp. Initial == 0 */
-    
-    /* Add link to y/n buttons and code to submit when yesButtonpressed then 
-    
-    if timervar > 1 day then 
-    
-    vote is allowed
-    
-    else alert "You allowed to vote only once within 24 hours" 
-    */
-    
-    /* Add acitivityIndicator aka Spinner
-    
-    */
-    
-    
-    /* Confidence rating query for special db class build with corrections */
-    
-    /* Query for number of the votes for another special db class 87 */
-
     @IBOutlet var evkurov: UIImageView!
     
     @IBAction func yesButtonPressed(sender: AnyObject) {
@@ -64,7 +44,44 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Find if user haven't already voted within 1 day so if he/she are allowed to vote
+
+        var votingStatus: Bool?
+        
+        //To retrive the control date value. First time it has nil value
+        var controlDate = NSUserDefaults.standardUserDefaults().objectForKey("controlDate") as? NSDate
+        var timeInterval = controlDate?.timeIntervalSinceNow
+        var dayInSeconds = 24.0 * 3600
+        
+        //debug
+        println(votingStatus)
+
+        if controlDate == nil {
+        
+            votingStatus = true
+            
+        } else {
+            
+            if timeInterval < dayInSeconds {
+            
+                votingStatus = false
                 
+            } else {
+            
+                votingStatus = true
+                
+            }
+            
+        }
+        
+        //debug
+        println(votingStatus)
+        println(controlDate)
+        println(timeInterval)
+        
+        // image loading code
+
         let url = NSURL(string: "http://www.ingushetia.ru/images/president3.jpg")
         
         let urlRequest = NSURLRequest(URL: url!)
@@ -73,17 +90,11 @@ class ViewController: UIViewController {
             response, data, error in
             
             if error != nil {
-            
                 println("fuck off")
-                
             } else {
-            
                 let image = UIImage(data: data)
-                
                 self.evkurov.image = image
-            
             }
-        
         })
     }
 
