@@ -31,25 +31,48 @@ class ViewController: UIViewController {
                     self.votingStatus = false
                 } else {
                     println(error)
-                    //alert show
                 }
             }
         } else {
+            //alert
+            var alert = UIAlertController(title: "Какого хрена?", message: "Вы можете голосовать только раз в сутки. П.С. Данатейшин мейд бай доктор Тагир!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
             println("Status is \(votingStatus)")
         }
     }
 
     @IBAction func noButtonPressed(sender: AnyObject) {
         
-        var score = PFObject(className: "score")
-        score.setObject(0, forKey: "vote")
-        score.saveInBackgroundWithBlock{
-            (succes: Bool!, error: NSError!) -> Void in
-            if succes == true {
-                println("Done with ID \(score.objectId)")
-            } else {
-                println(error)
+        //Check if votingStatus is true
+        if votingStatus == true {
+        
+            var score = PFObject(className: "score")
+            score.setObject(0, forKey: "vote")
+            score.saveInBackgroundWithBlock{
+                (succes: Bool!, error: NSError!) -> Void in
+                if succes == true {
+                    println("Done with ID \(score.objectId)")
+                    //update NSUserdefaults
+                    NSUserDefaults.standardUserDefaults().setObject(NSDate(), forKey: "controlDate")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    self.votingStatus = false
+                } else {
+                    println(error)
+                }
             }
+        } else {
+            //alert
+            var alert = UIAlertController(title: "Какого хрена?", message: "Вы можете голосовать только раз в сутки. П.С. Данатейшин мейд бай доктор Тагир!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+
+            println("Status is \(votingStatus)")
         }
     }
         
