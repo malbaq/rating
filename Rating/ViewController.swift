@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     
     var votingStatus: Bool?
     
+    var controlDate = NSUserDefaults.standardUserDefaults().objectForKey("controlDate") as? NSDate
+    
     @IBOutlet var evkurov: UIImageView!
     
     @IBAction func yesButtonPressed(sender: AnyObject) {
@@ -35,7 +37,7 @@ class ViewController: UIViewController {
             }
         } else {
             //alert
-            var alert = UIAlertController(title: "Какого хрена?", message: "Вы можете голосовать только раз в сутки. П.С. Данатейшин мейд бай доктор Тагир!", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Превышен лимит голосования", message: "Вы можете проголосовать только 1(один) раз в сутки. Последний раз Вы голосовали \(self.controlDate!) (Гринвич).", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }))
@@ -66,7 +68,7 @@ class ViewController: UIViewController {
             }
         } else {
             //alert
-            var alert = UIAlertController(title: "Какого хрена?", message: "Вы можете голосовать только раз в сутки. П.С. Данатейшин мейд бай доктор Тагир!", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Превышен лимит голосования", message: "Вы можете проголосовать только 1(один) раз в сутки. Последний раз Вы голосовали \(self.controlDate!) (Гринвич).", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { action in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }))
@@ -84,7 +86,7 @@ class ViewController: UIViewController {
         // var votingStatus: Bool?
         
         //To retrive the control date value. First time it has nil value
-        var controlDate = NSUserDefaults.standardUserDefaults().objectForKey("controlDate") as? NSDate
+        //var controlDate = NSUserDefaults.standardUserDefaults().objectForKey("controlDate") as? NSDate
         var timeInterval = controlDate?.timeIntervalSinceNow
         var dayInSeconds = 24.0 * -3600
         
