@@ -77,16 +77,19 @@ class ViewController: UIViewController {
             println("Status is \(votingStatus)")
         }
     }
+    
+    @IBOutlet var currentRating: UILabel!
+    
+    @IBOutlet var numberOfVotes: UILabel!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Find if user haven't already voted within 1 day so if his/her voting status true
-        // var votingStatus: Bool?
         
-        //To retrive the control date value. First time it has nil value
-        //var controlDate = NSUserDefaults.standardUserDefaults().objectForKey("controlDate") as? NSDate
+        
+        // Find if user haven't already voted within 1 day so if his/her voting status true
+        
         var timeInterval = controlDate?.timeIntervalSinceNow
         var dayInSeconds = 24.0 * -3600
         
